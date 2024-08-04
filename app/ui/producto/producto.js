@@ -16,7 +16,7 @@ const Producto = ({ product }) => {
         <p className="text-gray-600 mb-4">{product.category}</p>
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold">{product.price}</span>
-          <Link href={`/producto/${product.id}`}>
+          <Link href={`/productos/${product.id}`}>
               Ver más
           </Link>
         </div>
