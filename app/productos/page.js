@@ -31,7 +31,7 @@ export default function Catalogo() {
       </div>    
 
       <div className="mt-10 mb-10">
-        <Link className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-blue-600" href="/">
+        <Link className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-900" href="/">
             Volver a la página principal
         </Link>
       </div>

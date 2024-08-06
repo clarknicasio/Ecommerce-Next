@@ -18,19 +18,29 @@ const DetalleProducto = ({ id }) => {
     <>
     { product &&
     <div className="product-detail flex flex-col md:flex-row items-start">
-      <div className="md:w-1/2 p-4">
-        <Image src={product.imageUrl} alt={product.title} width={300} height={200} className="w-full h-auto" />
-      </div>
+    <div className="md:w-1/2 p-4 relative">
+            <div className="relative w-full h-auto">
+              <Image src={product.imageUrl} alt={product.title} width={300} height={200} className="w-full h-auto" />
+              {product.destacado && (
+                <span className="absolute top-1 left-1 bg-green-500 text-white text-xs px-2 py-1">
+                  Destacado
+                </span>
+              )}
+              {product.novedad && (
+                <span className="absolute top-1 left-1 bg-yellow-500 text-white text-xs px-2 py-1">
+                  Novedad
+                </span>
+              )}
+            </div>
+          </div>      
       <div className="md:w-1/2 p-4">
         <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
         <p className="mb-4">{product.description}</p>
         <p className="text-lg font-semibold mb-4">{product.price}</p>
         <p className="mb-4">Categoría: {product.category}</p>
-        {product.destacado && <p className="mb-4 text-green-500">Destacado</p>}
-        {product.novedad && <p className="mb-4 text-blue-500">Novedad</p>}
         
-        <div className="mb-4">
-          <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
+        <div className="mt-4 mb-4">
+          <label htmlFor="quantity" className="block">
             Cantidad
           </label>
           <input
@@ -45,7 +55,7 @@ const DetalleProducto = ({ id }) => {
 
         <Link href="/carrito">
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="my-5 bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-900"
           >
             Agregar al carrito
           </button>

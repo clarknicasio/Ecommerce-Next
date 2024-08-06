@@ -16,8 +16,8 @@ const Producto = ({ product }) => {
         <p className="text-gray-600 mb-4">{product.category}</p>
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold">{product.price}</span>
-          <Link href={`/productos/${product.id}`}>
-              Ver más
+          <Link href={`/productos/${product.id}`} className="hover:underline">
+              + Ver más
           </Link>
         </div>
       </div>
