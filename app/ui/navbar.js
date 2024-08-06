@@ -3,24 +3,26 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { categories } from '../lib/data';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import Menu from './menu';
 
 const Navbar = () => {
-  const [showCategories, setShowCategories] = useState(false);
+  const [mostrarCategorias, setMostrarCategorias] = useState(false);
 
-  const handleCategories = () => {
-    setShowCategories(!showCategories);
+  const handleCategorias = () => {
+    setMostrarCategorias(!mostrarCategorias);
   };
 
   return (
     <nav style={styles.nav}>
       <div style={styles.logo}>
-        <Link href="/">Logo</Link>
+        <Link href="/">Store NextJS</Link>
       </div>
-      <div style={styles.menu}>
+      <div style={styles.menu} className="hidden lg:flex lg:gap-8">
         <Link href="/productos">Catálogo</Link>
-        <div style={styles.dropdown} onMouseEnter={handleCategories} onMouseLeave={handleCategories}>
+        <div style={styles.dropdown} onMouseEnter={handleCategorias} onMouseLeave={handleCategorias}>
           <span style={styles.dropdownToggle}>Categorías</span>
-          {showCategories && (
+          {mostrarCategorias && (
             <div style={styles.dropdownMenu}>
               {categories.map(category => (
                 <Link key={category} href={`/categorias/${category}`} className="block px-4 py-2 hover:bg-gray-300">
@@ -33,8 +35,11 @@ const Navbar = () => {
         <Link href="/destacados">Destacados</Link>
         <Link href="/novedades">Novedades</Link>
       </div>
-      <div style={styles.cart}>
-        <Link href="/carrito">🛒</Link>
+      <div style={styles.cart} className="flex">
+        <Link href="/carrito" className="hidden lg:block"><ShoppingCartIcon className="h-7 w-7" /></Link>
+        <div className="block lg:hidden">
+          <Menu />
+        </div>
       </div>
     </nav>
   );
@@ -53,10 +58,6 @@ const styles = {
     fontSize: '1.5rem',
     fontWeight: 'bold',
   },
-  menu: {
-    display: 'flex',
-    gap: '2rem',
-  },
   dropdown: {
     position: 'relative',
   },
@@ -72,9 +73,10 @@ const styles = {
     padding: '0.5rem',
     zIndex: 1,
   },
-  cart: {
+  /*cart: {
+    minWeight: '200px',
     fontSize: '1.5rem',
-  },
+  },*/
 };
 
 export default Navbar;

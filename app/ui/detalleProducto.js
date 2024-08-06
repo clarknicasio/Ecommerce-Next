@@ -3,6 +3,7 @@
 import { products } from '../lib/data';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const DetalleProducto = ({ id }) => {
   const [product, setProduct] = useState(null);
@@ -42,11 +43,13 @@ const DetalleProducto = ({ id }) => {
           />
         </div>
 
-        <button
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        >
-          Agregar al carrito
-        </button>
+        <Link href="/carrito">
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          >
+            Agregar al carrito
+          </button>
+        </Link>
       </div>
     </div>
     }
