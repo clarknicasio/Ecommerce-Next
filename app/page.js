@@ -14,7 +14,7 @@ export default function Home() {
         <ListaProductos products={products} novedades={true} />
       </div>    
 
-      <h1 className="mt-20 mb-8">Productos destacados</h1>
+      <h1 className="mt-20 mb-8">Destacados</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <ListaProductos products={products} destacados={true} />
       </div>    

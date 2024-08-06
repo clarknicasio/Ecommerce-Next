@@ -22,38 +22,38 @@ const MenuList = ({ open, handleClose }) => {
             <aside
                 className={`${
                     !open ? 'translate-x-48' : ''
-                } transition-all w-48 bg-gray-500`}
+                } transition-all w-48 bg-white`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <div
                     onClick={handleClose}
-                    className="text-white text-right p-4 cursor-pointer"
+                    className="text-right p-4 cursor-pointer"
                 >
                     X
                 </div>
                 <nav className="flex mt-4 flex-col gap-3 px-3">
-                    <Link href="/productos" className="text-white p-2">
+                    <Link href="/productos" className="p-2"  onClick={handleClose}>
                         Catálogo
                     </Link>
-                    <div className="text-white p-2 cursor-pointer" onClick={toggleCategorias}>
+                    <div className="p-2 cursor-pointer" onClick={toggleCategorias}>
                         Categorías
                     </div>                    
                     {mostrarCategorias && (
                         <div className="flex flex-col gap-2 pl-4">
                             {categories.map(category => (
-                                <Link key={category} href={`/categorias/${category}`} className="text-white p-2">
+                                <Link key={category} href={`/categorias/${category}`} className="p-2" onClick={handleClose}>
                                 {category}
                                 </Link>
                             ))}              
                         </div>
                     )}                    
-                    <Link href="/destacados" className="text-white p-2">
+                    <Link href="/destacados" className="p-2" onClick={handleClose}>
                         Destacados
                     </Link>
-                    <Link href="/novedades" className="text-white p-2">
+                    <Link href="/novedades" className="p-2" onClick={handleClose}>
                         Novedades
                     </Link>
-                    <Link href="/carrito" className="text-white p-2">
+                    <Link href="/carrito" className="p-2" onClick={handleClose}>
                         Carrito
                     </Link>
                 </nav>

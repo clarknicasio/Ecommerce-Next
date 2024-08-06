@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navContainer}>
       <div className={styles.logo}>
-        <Link href="/">Store NextJS</Link>
+        <Link href="/"><span className="font-bold text-blue-900">STORE</span><span className="font-extrabold underline">NEXT</span>js</Link>
       </div>
       <div className="hidden lg:flex lg:gap-8">
         <Link href="/productos">Catálogo</Link>
