@@ -1,7 +1,7 @@
 import { products } from './lib/data';
 import Link from 'next/link';
 import ListaProductos from './ui/listaProductos';
-import Banners from './ui/Banners';
+import Banners from './ui/banners';
 
 export default function Home() {
   return (
