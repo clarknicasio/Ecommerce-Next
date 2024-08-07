@@ -1,6 +1,7 @@
 "use client";
 
 import { products } from '../lib/data';
+import Contador from '../ui/contador';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -43,14 +44,7 @@ const DetalleProducto = ({ id }) => {
           <label htmlFor="quantity" className="block">
             Cantidad
           </label>
-          <input
-            type="number"
-            id="quantity"
-            name="quantity"
-            value={1}
-            min="1"
-            className="mt-1 block w-full pl-3 pr-12 sm:text-sm border-gray-300 rounded-md"
-          />
+          <Contador />
         </div>
 
         <Link href="/carrito">
