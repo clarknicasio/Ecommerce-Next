@@ -13,7 +13,7 @@ export default function Categoria({ params }) {
       </div>    
 
       <div className="mt-10 mb-10">
-        <Link className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-blue-600" href="/productos">
+        <Link className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-900" href="/productos">
           Ver catálogo completo
         </Link>
       </div>
