@@ -21,7 +21,7 @@ const DetalleProducto = ({ id }) => {
     <div className="product-detail flex flex-col md:flex-row items-start">
     <div className="md:w-1/2 p-4 relative z-10">
             <div className="relative w-full h-auto">
-              <Image src={product.imageUrl} alt={product.title} width={450} height={300} className="w-full h-auto" />
+              <Image src={product.imageUrl} alt={product.title} width={500} height={500} className="w-full h-auto" />
               {product.destacado && (
                 <span className="absolute top-1 left-1 bg-green-500 text-white text-xs px-2 py-1 z-20">
                   Destacado

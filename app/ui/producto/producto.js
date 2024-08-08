@@ -7,9 +7,9 @@ const Producto = ({ product }) => {
       <Image
         src={product.imageUrl}
         alt={product.title}
-        width={300}
-        height={200}
-        className="w-full h-48 object-cover p-4"
+        width={500}
+        height={500}
+        className="w-full object-cover p-4"
       />
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
