@@ -3,8 +3,6 @@
 import React, { useState } from 'react'; 
 import MenuList from './menuList';
 import Image from 'next/image';
-//import { Bar3 } from '@heroicons/react/24/solid';
-//import { useState } from 'react';
 
 const Menu = () => { 
     const [open, setOpen] = useState(false); 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Contador = () => {
+const Contador = ({onQuantityChange }) => {
   const [quantity, setQuantity] = useState(1);
 
   const sumar = () => {
@@ -12,6 +12,12 @@ const Contador = () => {
       setQuantity(quantity - 1);
     }
   };
+
+  useEffect(() => {
+    if (onQuantityChange) {
+      onQuantityChange(quantity);
+    }
+  }, [quantity, onQuantityChange]);
 
   return (
     <div className="flex items-center space-x-2 mt-2">

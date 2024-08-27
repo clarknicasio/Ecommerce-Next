@@ -1,8 +1,12 @@
-import { products } from '../lib/data';
+//import { products } from '../lib/data';
+import { getProducts } from '../lib/data';
 import Link from 'next/link';
 import ListaProductos from '../ui/listaProductos';
 
-export default function Destacados() {
+export default async function Destacados() {
+  
+  const products = await getProducts(null, true, null);
+
   return (
     <main className="m-4 flex flex-col items-center">
 

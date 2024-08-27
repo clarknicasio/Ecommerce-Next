@@ -1,19 +1,33 @@
 "use client";
 
-import { products } from '../lib/data';
-import { useState } from 'react';
+import { getProducts } from '../lib/data';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ListaProductos from '../ui/listaProductos';
 
 export default function Catalogo() {
 
   const [filter, setFilter] = useState('');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    getProducts().then((data) => {
+      setProducts(data);
+      setLoading(false);
+    });
+  }, []);
 
   const filteredProducts = products.filter(product =>
     product.title.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
+    loading ?
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="text-lg font-bold">Cargando catálogo...</div>
+    </div>
+    :
     <main className="m-4 flex flex-col items-center">
 
       <h1 className="mt-10 mb-8">Catálogo completo</h1>
@@ -24,6 +38,7 @@ export default function Catalogo() {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         className="mb-4 p-2 border border-gray-300 rounded"
+        autofocus
       />
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

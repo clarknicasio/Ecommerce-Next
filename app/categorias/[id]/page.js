@@ -1,9 +1,37 @@
-import { products } from '../../lib/data';
+import { getProducts } from '../../lib/data';
 import Link from 'next/link';
 import ListaProductos from '../../ui/listaProductos';
 
-export default function Categoria({ params }) {
+export function generateStaticParams () {
+  return [
+    { categoria: 'Celulares'},
+    { categoria: 'Smartwatches'},
+    { categoria: 'Memorias'},
+    { categoria: 'Auriculares'},            
+  ];
+}
+
+export const revalidate = 3600;
+
+export async function generateMetadata({ params }) {
   const { id: categoria } = params;
+
+  return {
+    title: `${categoria}`,
+    description: `¿Estás buscando ${categoria}? Tenemos los mejores productos y los mejores precios`,
+    keywords: `${categoria}`,
+    openGraph: {
+      title: `Catálogo de ${categoria}`,
+      description: `${categoria}. Tenemos los mejores productos y los mejores precios`,
+      site_name: 'STORENextJS',
+    },
+  };
+}
+
+export default async function Categoria({ params }) {
+  const { id: categoria } = params;
+
+  const products = await getProducts(categoria);
 
   return (
     <main className="m-4 flex flex-col items-center">

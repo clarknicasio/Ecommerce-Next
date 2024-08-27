@@ -15,8 +15,8 @@ const Producto = ({ product }) => {
         <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
         <p className="text-gray-600 mb-4">{product.category}</p>
         <div className="flex justify-between items-center">
-          <span className="text-lg font-bold">{product.price}</span>
-          <Link href={`/productos/${product.id}`} className="hover:underline">
+          <span className="text-lg font-bold">${product.price}</span>
+          <Link href={`/productos/${product.slug}`} className="hover:underline">
               + Ver más
           </Link>
         </div>

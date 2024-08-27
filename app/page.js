@@ -1,4 +1,3 @@
-//import { products } from './lib/data';
 import { getProducts } from './lib/data';
 import Link from 'next/link';
 import ListaProductos from './ui/listaProductos';

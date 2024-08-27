@@ -1,16 +1,13 @@
 "use client";
 
 import Link from 'next/link';
-import { useState } from 'react';
+import {useCartContext} from '@/app/context/CartContext';
 
 export default function Carrito() {
 
-  const itemsCarrito = [
-    { id: 1, title: 'Producto 1', quantity: 2, price: 20.00 },
-    { id: 2, title: 'Producto 2', quantity: 1, price: 15.00 },
-  ];
+  const { cart } = useCartContext();
 
-  const [items, setItems] = useState(itemsCarrito);
+  const total = cart.reduce((suma, item) => suma + (item.quantity * item.price), 0).toFixed(2);
 
   return (
     
@@ -18,16 +15,22 @@ export default function Carrito() {
       <h1 className="mt-10 mb-8">Su carrito</h1>
 
       <div className="w-full max-w-4xl mx-auto p-4">
-        {items.map(item => (
-          <div key={item.id} className="flex justify-between items-center py-2 border-b">
+        {cart.map(item => (
+          <div key={item.slug} className="flex justify-between items-center py-2 border-b">
             <div className="flex flex-col">
               <span className="font-semibold">{item.title}</span>
               <span className="text-gray-600">x{item.quantity}</span>
-              <span className="text-gray-600">${item.price.toFixed(2)}</span>
+              <span className="text-gray-600">${item.price}</span>
             </div>
             <span className="text-lg font-semibold">${(item.quantity * item.price).toFixed(2)}</span>
           </div>
         ))}
+        <div className="flex justify-between items-center py-2 border-b">
+          <div className="flex flex-col">
+            <span className="font-semibold">Total</span>
+          </div>
+          <span className="text-lg font-semibold">${total}</span>
+        </div>
       </div>
 
 
