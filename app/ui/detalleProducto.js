@@ -15,7 +15,7 @@ const DetalleProducto = ({ id }) => {
 
   const fetchProduct = async (id) => {
     try {    
-      const response = await fetch(`http://localhost:3000/api/productos/${id}`, {cache: 'no-store'});
+      const response = await fetch(`/api/productos/${id}`, {cache: 'no-store'});
       if (response.ok) {
         const product = await response.json();
         setSingleProduct(product);
