@@ -1,9 +1,13 @@
-import { products } from './lib/data';
+//import { products } from './lib/data';
+import { getProducts } from './lib/data';
 import Link from 'next/link';
 import ListaProductos from './ui/listaProductos';
 import Banners from './ui/banners';
 
-export default function Home() {
+export default async function Home() {
+
+  const products = await getProducts();
+
   return (
     <main className="m-10 flex flex-col items-center">
 

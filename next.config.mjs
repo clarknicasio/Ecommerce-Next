@@ -1,9 +1,14 @@
+import path from 'path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['via.placeholder.com'], // Agrega el dominio que estés usando
-    },
-  };
-  
-  export default nextConfig;
-  
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve('.');
+    return config;
+  },
+  images: {
+    domains: ['via.placeholder.com'], 
+  },
+};
+
+export default nextConfig;

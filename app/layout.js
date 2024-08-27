@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from './ui/navbar';
+import { CartProvider } from './context/CartContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +19,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased h-screen flex flex-col`}>
-
-        <Navbar />
-        {children}
-        <footer className="text-center p-4 bg-gray-100 border-t border-gray-300">
-          {new Date().getFullYear()} Copyright NextJS Ecommerce
-        </footer>              
+        <CartProvider>
+          <Navbar />
+          {children}
+          <footer className="text-center p-4 bg-gray-100 border-t border-gray-300">
+            {new Date().getFullYear()} Copyright NextJS Ecommerce
+          </footer>              
+        </CartProvider>
       </body>
     </html>
   );
