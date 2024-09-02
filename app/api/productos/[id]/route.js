@@ -8,15 +8,25 @@ export async function GET(request, { params }) {
 
   try {
     const productRef = collection(db, 'products');
-    const q = query(productRef, where('slug', '==', id));
+    let q; 
+    if (id === 'todos') {
+      q = query(productRef); 
+    } else {
+      q = query(productRef, where('slug', '==', id)); 
+    }
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      const product = querySnapshot.docs[0].data();
 
-      revalidatePath(`/productos/${id}`);
+      if (id === 'todos') {
+        const products = querySnapshot.docs.map(doc => doc.data());
+        return NextResponse.json(products, { status: 200 });
+      } else {
+        const product = querySnapshot.docs[0].data();
+        revalidatePath(`/productos/${id}`);
+        return NextResponse.json(product, { status: 200 });
+      }      
 
-      return NextResponse.json(product, { status: 200 });
     } else {
       return NextResponse.json({ message: 'Producto no encontrado' }, { status: 404 });
     }

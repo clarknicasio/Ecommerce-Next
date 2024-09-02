@@ -25,3 +25,4 @@ https://ecommerce-next-rho-henna.vercel.app
 - Hero Icons
 - ESLint
 - Tailwind CSS
+- Firestore
