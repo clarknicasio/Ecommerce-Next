@@ -7,7 +7,8 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['via.placeholder.com'], 
+    //domains: ['via.placeholder.com'], 
+    domains: ['firebasestorage.googleapis.com'],
   },
 };
 

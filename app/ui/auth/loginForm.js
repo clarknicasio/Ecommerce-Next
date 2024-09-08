@@ -2,8 +2,11 @@
 "use client";
 
 import { useState } from "react";
+import { useAuthContext } from "../../context/authContext";
 
 const LoginForm = () => { 
+    const { registerUser, loginUser, googleLogin } = useAuthContext();
+
     const [values, setValues] = useState({ 
         email: '',
         password: '',
@@ -25,7 +28,7 @@ const LoginForm = () => {
     return (
         <div className="fixed w-screen h-screen inset-0 z-10 flex justify-center items-center bg-blue-400 bg-opacity-25"> 
             <form onSubmit={handleSubmit} className="bg-white py-4 px-6 rounded-x1 max-w-md w-full">
-                <h2>Ingreso</h2>
+                <h2>Ingrese sus credenciales</h2>
                 <input
                 type="email"
                 value={values.email}
@@ -45,7 +48,9 @@ const LoginForm = () => {
                 onChange={handleChange}
                 />
 
-                <button type="submit">Ingresar</button>
+                <button type="submit" onClick={()=> loginUser(values)} className="bg-green-500 text-white py-1 px-3 rounded mr-2">Ingresar</button>
+                <button type="submit" onClick={()=> registerUser(values)} className="bg-gray-400 text-white py-1 px-3 rounded mr-2">Registrarme</button>
+                <button type="submit" onClick={googleLogin} className="bg-blue-400 text-white py-1 px-3 rounded">Ingresar con Google</button>
             </form>
         </div>
     );

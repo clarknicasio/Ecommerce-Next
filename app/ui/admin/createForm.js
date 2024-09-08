@@ -1,18 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from '@/app/config/firebase';
 
-const createProduct = async (values, file)  => {
+const createProduct = async (values, file, router)  => {
 
     const storageRef = ref(storage, values.slug);
-
     const fileSnapshot = await uploadBytes(storageRef,file);
-
     const fileURL = await getDownloadURL(fileSnapshot.ref);
-
     const docRef = doc(db, "products", values.slug);
 
     return setDoc(docRef, {
@@ -20,12 +18,17 @@ const createProduct = async (values, file)  => {
         imageUrl: fileURL
     })
     
-    .then(()=> console.log("Producto agregado") )
+    .then(() => {
+        console.log("Producto agregado");
+        router.push('/admin'); 
+    })
     .catch((error) => console.error("Error al agregar producto: ", error));
 
 }
 
 const CreateForm = ()  => {
+
+    const router = useRouter();
 
     const [values, setValues] = useState({
         title: '',
@@ -33,6 +36,7 @@ const CreateForm = ()  => {
         category: '',
         slug: '',
         price: '',
+        stock: '',
         destacado: false,
         novedad: false,
     })
@@ -54,7 +58,7 @@ const CreateForm = ()  => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(values)
-        await createProduct(values, file);
+        await createProduct(values, file, router);
     }
 
     return (
@@ -125,6 +129,19 @@ const CreateForm = ()  => {
             </div>
 
             <div className="mb-4">
+                <label htmlFor="stock" className="block text-gray-700">Stock</label>
+                <input 
+                    type="number" 
+                    id="stock" 
+                    name="stock" 
+                    value={values.stock} 
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded"
+                    required
+                />
+            </div>
+
+            <div className="mb-4">
                 <label htmlFor="slug" className="block text-gray-700">Imagen</label>
                 <input 
                     type="file" 
@@ -137,30 +154,32 @@ const CreateForm = ()  => {
                 />
             </div>
 
-            <div className="mb-4">
-                <label className="block text-gray-700">Destacado</label>
-                <input 
-                    type="checkbox" 
-                    id="destacado" 
-                    name="destacado" 
-                    checked={values.destacado} 
-                    onChange={handleChange}
-                    className="mr-2 leading-tight"
-                />
-                <label htmlFor="destacado" className="text-gray-700">Sí</label>
-            </div>
+            <div className="flex mb-4">
+                <div className="w-1/2">
+                    <label className="block text-gray-700">Destacado</label>
+                    <input 
+                        type="checkbox" 
+                        id="destacado" 
+                        name="destacado" 
+                        checked={values.destacado} 
+                        onChange={handleChange}
+                        className="mr-2 leading-tight"
+                    />
+                    <label htmlFor="destacado" className="text-gray-700">Sí</label>
+                </div>
 
-            <div className="mb-4">
-                <label className="block text-gray-700">Novedad</label>
-                <input 
-                    type="checkbox" 
-                    id="novedad" 
-                    name="novedad" 
-                    checked={values.novedad} 
-                    onChange={handleChange}
-                    className="mr-2 leading-tight"
-                />
-                <label htmlFor="novedad" className="text-gray-700">Sí</label>
+                <div className="w-1/2">
+                    <label className="block text-gray-700">Novedad</label>
+                    <input 
+                        type="checkbox" 
+                        id="novedad" 
+                        name="novedad" 
+                        checked={values.novedad} 
+                        onChange={handleChange}
+                        className="mr-2 leading-tight"
+                    />
+                    <label htmlFor="novedad" className="text-gray-700">Sí</label>
+                </div>
             </div>
 
             <button 

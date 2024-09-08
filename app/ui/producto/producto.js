@@ -10,6 +10,8 @@ const Producto = ({ product }) => {
         width={500}
         height={500}
         className="w-full object-cover p-4"
+        placeholder="blur" 
+        blurDataURL="data:image/jpeg;base64,..."
       />
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{product.title}</h2>

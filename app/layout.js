@@ -10,6 +10,9 @@ export const metadata = {
   title: "Ecommerce NextJS",
   description: "Bienvenidos al Ecommerce",
   keywords: ["Ecommerce","Celulares","Smartwatches","Memorias","Auriculares"],
+  icons: {
+    icon: "/favicon.ico", 
+  },  
   openGraph: {
     title: "Ecommerce NextJS",
     description: "Bienvenidos al Ecommerce",
