@@ -1,6 +1,29 @@
 import { Suspense } from 'react';
 import DetalleProducto from '../../ui/detalleProducto';
 
+export async function generateMetadata({ params }) {
+  const { id } = params;
+
+  const response = await fetch(`${process.env.API_BASE_URL}/api/productos/${id}`);
+  const product = await response.json();
+
+  return {
+    title: product.title, 
+    description: product.description, 
+    openGraph: {
+      title: product.title,
+      description: product.description,
+      images: [
+        {
+          url: product.imageUrl,
+          alt: product.title,
+        },
+      ],
+    },
+  };
+}
+
+
 export default function Producto({ params }) {
   const { id: id } = params;
 
