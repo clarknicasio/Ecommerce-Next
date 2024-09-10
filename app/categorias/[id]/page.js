@@ -32,6 +32,9 @@ export default async function Categoria({ params }) {
 
   try {
 
+    console.log(`Fetching category: ${categoria}`);
+    console.log(process.env.API_BASE_URL)
+    
   const response = await fetch(`${process.env.API_BASE_URL}/api/productos/categoria/${categoria}`, {cache: 'no-store'});
   
   if (!response.ok) {
