@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore";
-import { db, storage } from '@/app/config/firebase';
+//import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+//import { doc, setDoc } from "firebase/firestore";
+//import { db, storage } from '@/app/config/firebase';
 
-const createProduct = async (values, file, router)  => {
+/*const createProduct = async (values, file, router)  => {
 
     const storageRef = ref(storage, values.slug);
     const fileSnapshot = await uploadBytes(storageRef,file);
@@ -24,7 +24,7 @@ const createProduct = async (values, file, router)  => {
     })
     .catch((error) => console.error("Error al agregar producto: ", error));
 
-}
+}*/
 
 const CreateForm = ()  => {
 
@@ -46,7 +46,7 @@ const CreateForm = ()  => {
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         if (name === "imageUrl" && e.target.files) {
-            setFile(e.target.files[0]); // Guardar el archivo en el estado
+            setFile(e.target.files[0]); 
         } else {
             setValues({
                 ...values,
@@ -57,8 +57,37 @@ const CreateForm = ()  => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values)
-        await createProduct(values, file, router);
+        //console.log(values)
+        //await createProduct(values, file, router);
+        const formData = new FormData();
+
+        formData.append('title', values.title);
+        formData.append('description', values.description);
+        formData.append('category', values.category);
+        formData.append('slug', values.slug);
+        formData.append('price', values.price);
+        formData.append('stock', values.stock);
+        formData.append('destacado', values.destacado);
+        formData.append('novedad', values.novedad);        
+        
+        if (file) {
+            formData.append('imageUrl', file);
+        }
+        
+        try {
+            const response = await fetch('/api/productos', {
+                method: 'POST',
+                body: formData,
+            });
+      
+            if (response.ok) {
+                router.push('/admin');
+            } else {
+                console.error('Error al agregar producto');
+            }
+        } catch (error) {
+            console.error('Error al agregar producto', error);
+        }        
     }
 
     return (

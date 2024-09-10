@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 const updateProduct = async (id, values, file, router) => {
 
-    //console.log('El id es '+id)
     try {
         const formData = new FormData();
         formData.append('title', values.title);
@@ -142,7 +141,7 @@ const UpdateForm = ({ id }) => {
                     value={values.slug}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
-                    required
+                    readonly="true"
                 />
             </div>
 

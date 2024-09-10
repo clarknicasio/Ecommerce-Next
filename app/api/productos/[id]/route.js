@@ -68,8 +68,8 @@ export async function PUT(request, { params }) {
       slug: formData.get('slug'),
       price: formData.get('price'),
       stock: formData.get('stock'),
-      status: formData.get('destacado') === 'true',
-      status: formData.get('novedad') === 'true'
+      destacado: formData.get('destacado') === 'true',
+      novedad: formData.get('novedad') === 'true'
     };
 
     const imageFile = formData.get('imageUrl');

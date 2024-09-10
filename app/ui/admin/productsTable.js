@@ -34,6 +34,7 @@ const ProductsTable =  () => {
         });
 
         if (response.ok) {
+          //console.log('Elimine el producto '+slug)
           //setProducts(products.filter(product => product.id !== id));
           router.refresh();
         } else {
@@ -83,7 +84,7 @@ const ProductsTable =  () => {
                     {item.novedad ? "SI" : "NO"}
                 </td>
                 <td className="border px-4 py-2">${item.price}</td>
-                <td className="border px-4 py-2">${item.stock}</td>
+                <td className="border px-4 py-2">{item.stock}</td>
                 <td className="border px-4 py-2">
                     <Image
                         src={item.imageUrl}

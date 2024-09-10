@@ -1,4 +1,3 @@
-import { getProducts } from '../../lib/data';
 import Link from 'next/link';
 import ListaProductos from '../../ui/listaProductos';
 
@@ -31,7 +30,13 @@ export async function generateMetadata({ params }) {
 export default async function Categoria({ params }) {
   const { id: categoria } = params;
 
-  const products = await getProducts(categoria);
+  const response = await fetch(`${process.env.API_BASE_URL}/api/productos/categoria/${categoria}`, {cache: 'no-store'});
+  
+  if (!response.ok) {
+    throw new Error(`Error al obtener la categoría ${categoria}`);
+  }
+
+  const products = await response.json();
 
   return (
     <main className="m-4 flex flex-col items-center">
