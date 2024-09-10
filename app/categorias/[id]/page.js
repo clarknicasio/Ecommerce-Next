@@ -30,10 +30,13 @@ export async function generateMetadata({ params }) {
 export default async function Categoria({ params }) {
   const { id: categoria } = params;
 
+  try {
+
   const response = await fetch(`${process.env.API_BASE_URL}/api/productos/categoria/${categoria}`, {cache: 'no-store'});
   
   if (!response.ok) {
-    throw new Error(`Error al obtener la categoría ${categoria}`);
+    console.error(`Error ${response.status}: ${response.statusText}`);
+    throw new Error(`Error al obtener la categoria ${categoria}`);
   }
 
   const products = await response.json();
@@ -52,4 +55,10 @@ export default async function Categoria({ params }) {
       </div>
     </main>
   );
+
+  } catch (error) {
+    console.error(`Error en la categoria ${categoria}:`, error.message);
+    return <h1>Error al cargar los productos de la categoria</h1>;
+  }
+
 }
