@@ -13,7 +13,7 @@ export function generateStaticParams () {
 export const revalidate = 3600;
 
 export async function generateMetadata({ params }) {
-  const { id: categoria } = params;
+  const { categoria } = params;
 
   return {
     title: `${categoria}`,
