@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import ListaProductos from '../../ui/listaProductos';
 
-export function generateStaticParams () {
+/*export function generateStaticParams () {
   return [
     { categoria: 'Celulares'},
     { categoria: 'Smartwatches'},
     { categoria: 'Memorias'},
     { categoria: 'Auriculares'},            
   ];
-}
+}*/
 
 export const revalidate = 3600;
 
 export async function generateMetadata({ params }) {
-  const { categoria } = params;
+  const { id: categoria } = params;
 
   return {
     title: `${categoria}`,
@@ -34,7 +34,7 @@ export default async function Categoria({ params }) {
 
     console.log(`Fetching category: ${categoria}`);
     console.log(process.env.API_BASE_URL)
-    
+
   const response = await fetch(`${process.env.API_BASE_URL}/api/productos/categoria/${categoria}`, {cache: 'no-store'});
   
   if (!response.ok) {
