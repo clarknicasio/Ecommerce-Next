@@ -56,7 +56,11 @@ const PurchasesTable =  () => {
                 <td className="border px-4 py-2">{item.email}</td>                
                 <td className="border px-4 py-2">{item.dni}</td>         
                 <td className="border px-4 py-2">{item.direccion}</td>         
+                { item.detalle ?
                 <td className="border px-4 py-2" dangerouslySetInnerHTML={{ __html: item.detalle.replace(/ - /g, '<br />') }}></td>             
+                :
+                <td></td>
+                }
                 <td className="border px-4 py-2">${item.total}</td>
             </tr>
           ))}

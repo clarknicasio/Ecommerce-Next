@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 
 const ProductsTable =  () => {
@@ -27,15 +28,24 @@ const ProductsTable =  () => {
   }, []);
 
   const handleDelete = async (slug) => {
-    if (confirm('Vas a eliminar este producto ¿Estás Seguro?')) {
+
+    const cartel = await Swal.fire({
+      title: 'Vas a eliminar este producto',
+      text: '¿Estás Seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    });
+
+    if (cartel.isConfirmed) {
       try {
         const response = await fetch(`/api/productos/${slug}`, {
           method: 'DELETE',
         });
 
         if (response.ok) {
-          //console.log('Elimine el producto '+slug)
-          //setProducts(products.filter(product => product.id !== id));
           router.refresh();
         } else {
           console.error('Error al eliminar producto');
