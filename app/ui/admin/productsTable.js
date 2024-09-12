@@ -15,7 +15,7 @@ const ProductsTable =  () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/productos/todos', { cache: 'no-store' });
+        const response = await fetch('/api/productos/todos', { cache: 'no-store' });
         const data = await response.json();
         setItems(data);
         setLoading(false); 
