@@ -48,9 +48,9 @@ const LoginForm = () => {
                 onChange={handleChange}
                 />
 
-                <button type="submit" onClick={()=> loginUser(values)} className="bg-green-500 text-white py-1 px-3 rounded mr-2">Ingresar</button>
-                <button type="submit" onClick={()=> registerUser(values)} className="bg-gray-400 text-white py-1 px-3 rounded mr-2">Registrarme</button>
-                <button type="submit" onClick={googleLogin} className="bg-blue-400 text-white py-1 px-3 rounded">Ingresar con Google</button>
+                <button type="submit" onClick={()=> loginUser(values)} className="bg-green-500 text-white py-1 px-2 rounded mr-2 mt-1">Ingresar</button>
+                <button type="submit" onClick={()=> registerUser(values)} className="bg-gray-400 text-white py-1 px-2 rounded mr-2 mt-1">Registrarme</button>
+                <button type="submit" onClick={googleLogin} className="bg-blue-400 text-white py-1 px-2 rounded mt-1">Cuenta Google</button>
             </form>
         </div>
     );

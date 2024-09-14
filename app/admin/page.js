@@ -15,12 +15,12 @@ export default function Admin() {
       <div className="flex justify-between items-center mb-4">
         <div>
           <Link href="/admin/create">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded mr-2">Agregar producto</button>
+            <button className="bg-blue-500 text-white py-2 px-3 rounded mr-2">Nuevo producto</button>
           </Link>
           <Link href="/admin/purchases">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded mr-2">Ver compras</button>
+            <button className="bg-blue-500 text-white py-2 px-3 rounded mr-2">Compras</button>
           </Link>
-          <button type="submit" onClick={()=> logout()} className="bg-red-500 text-white py-2 px-4 rounded">Logout</button>
+          <button type="submit" onClick={()=> logout()} className="bg-red-500 text-white py-2 px-3 rounded">Logout</button>
         </div>
       </div>
 
