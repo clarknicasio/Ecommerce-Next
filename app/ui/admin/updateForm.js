@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -179,6 +180,15 @@ const UpdateForm = ({ id }) => {
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
+                {
+                    values.imageUrl &&
+                    <Image
+                        src={values.imageUrl}
+                        alt={values.title}
+                        width={150}
+                        height={150}
+                    />
+                }
             </div>
 
             <div className="flex mb-4">
