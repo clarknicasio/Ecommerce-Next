@@ -26,3 +26,4 @@ https://ecommerce-next-rho-henna.vercel.app
 - ESLint
 - Tailwind CSS
 - Firestore
+- SweetAlert2

@@ -11,8 +11,6 @@ export default function Checkout() {
 
   const { cart, clearCart } = useCartContext();
   const total = cart.reduce((suma, item) => suma + (item.quantity * item.price), 0).toFixed(2);
-
-  //console.log(JSON.stringify(cart))
   
   const router = useRouter();
 
@@ -72,8 +70,6 @@ export default function Checkout() {
         clearCart();        
         router.push('/');
       });      
-        //alert('Compra confirmada');              
-        //router.push('/');
 
     } catch (error) {
       console.error('Error al agregar compra', error);

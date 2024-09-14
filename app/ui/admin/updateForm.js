@@ -60,7 +60,6 @@ const UpdateForm = ({ id }) => {
                 const product = await response.json();
                 setValues(product);
                 setLoading(false);
-                //console.log('Valores: '+values)
             } else {
                 console.error("Error al obtener el producto");
             }

@@ -1,5 +1,4 @@
 import UpdateForm from "../../../ui/admin/updateForm";
-//import { useParams } from 'next/navigation';
 
 const UpdatePage = ({ params }) => {
 

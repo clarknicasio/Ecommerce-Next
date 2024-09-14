@@ -2,29 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-//import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-//import { doc, setDoc } from "firebase/firestore";
-//import { db, storage } from '@/app/config/firebase';
-
-/*const createProduct = async (values, file, router)  => {
-
-    const storageRef = ref(storage, values.slug);
-    const fileSnapshot = await uploadBytes(storageRef,file);
-    const fileURL = await getDownloadURL(fileSnapshot.ref);
-    const docRef = doc(db, "products", values.slug);
-
-    return setDoc(docRef, {
-        ...values,
-        imageUrl: fileURL
-    })
-    
-    .then(() => {
-        console.log("Producto agregado");
-        router.push('/admin'); 
-    })
-    .catch((error) => console.error("Error al agregar producto: ", error));
-
-}*/
 
 const CreateForm = ()  => {
 
@@ -57,8 +34,6 @@ const CreateForm = ()  => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //console.log(values)
-        //await createProduct(values, file, router);
         const formData = new FormData();
 
         formData.append('title', values.title);

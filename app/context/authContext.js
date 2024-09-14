@@ -18,29 +18,13 @@ export const AuthProvider = ({children}) => {
     });
 
     const registerUser = async (values) => {
-        //const userCredential = await createUserWithEmailAndPassword (auth, values.email, values.password);
+
         await createUserWithEmailAndPassword (auth, values.email, values.password);
-        //console.log(userCredential)
-    
-        //const user = userCredential.user;
-    
-            //setUser({
-            //    logged: true,
-            //    email: user.email, user: user.uid
-            //})
     }
     
     const loginUser = async (values) => {
-        //const userCredential = await signInWithEmailAndPassword (auth, values.email, values.password);
+
         await signInWithEmailAndPassword (auth, values.email, values.password);
-        //console.log(userCredential)
-    
-        //const user = userCredential.user;
-    
-            //setUser({
-            //    logged: true,
-            //    email: user.email, user: user.uid
-            //})
     }
     
     const logout = async () => {    
@@ -54,7 +38,6 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => { 
         onAuthStateChanged(auth, (user) => { 
-            //console.log(user);
 
             if (user) {
                 setUser({

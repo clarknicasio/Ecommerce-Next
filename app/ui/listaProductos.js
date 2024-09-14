@@ -11,7 +11,6 @@ const ListaProductos = ({ products, destacados = false, novedades = false, categ
     return (
         <>
             {productsFilter
-                //.filter(product => !destacados || product.destacado)
                 .map(product => (
                     <Producto key={product.slug} product={product} />
                 ))

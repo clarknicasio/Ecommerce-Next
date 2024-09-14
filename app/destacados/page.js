@@ -1,4 +1,3 @@
-//import { getProducts } from '../lib/data';
 import Link from 'next/link';
 import ListaProductos from '../ui/listaProductos';
 
@@ -11,8 +10,6 @@ export default async function Destacados() {
   }
 
   const products = await response.json();
-
-  //const products = await getProducts(null, true, null);
 
   return (
     <main className="m-4 flex flex-col items-center">
